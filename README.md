@@ -6,7 +6,7 @@ of options to transform the text currently in your clipboard. You can also
 select "Options" to choose which transformations to show and which to hide. This
 can help if you have a lot of plugins.
 
-= Writing plugins =
+# Writing plugins #
 
 Writing your own plugins is not very hard. Remember to put them in
 `~/.local/share/translit/transforms/`.
