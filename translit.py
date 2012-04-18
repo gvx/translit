@@ -94,6 +94,7 @@ def parsefile(name):
 			items.append(Item(' → '.join(reversed(caption)), reversed(transformations[1])))
 		return items
 
+SYSPATH = '/usr/share/translit/'
 PATH = (os.environ.get('XDG_DATA_DIR') or (os.environ.get('HOME') + '/.local/share')) + '/translit/'
 
 disabled = set()
@@ -106,7 +107,8 @@ class Main:
 		self.menu = gtk.Menu()
 
 		self.read_disabled(PATH)
-		self.read_from_dir(PATH)
+		for path in [SYSPATH, PATH]:
+			self.read_from_dir(path)
 
 		sep = gtk.SeparatorMenuItem()
 		sep.show()
