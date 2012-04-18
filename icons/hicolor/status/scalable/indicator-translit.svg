@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="22"
+   height="22"
+   id="svg2987"
+   version="1.1"
+   inkscape:version="0.48.2 r9819"
+   sodipodi:docname="indicator-translit.svg"
+   inkscape:export-filename="/home/robin/Hacking/funwith/python/translit/icons/ubuntu-mono-dark/status/22/indicator-translit.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs2989" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="5.6568542"
+     inkscape:cx="31.587455"
+     inkscape:cy="5.80903"
+     inkscape:document-units="px"
+     inkscape:current-layer="text2995"
+     showgrid="false"
+     inkscape:window-width="1600"
+     inkscape:window-height="846"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2992">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-1030.3622)">
+    <g
+       style="font-size:40px;font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:URW Palladio L;-inkscape-font-specification:URW Palladio L Medium"
+       id="text2995">
+      <text
+         xml:space="preserve"
+         style="font-size:48.30128098px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.77144647;stroke-miterlimit:0;stroke-opacity:1;stroke-dasharray:none;font-family:Sans;-inkscape-font-specification:Linux Libertine O"
+         x="1.9884896"
+         y="1272.0911"
+         id="text4316"
+         sodipodi:linespacing="125%"
+         transform="scale(1.2136093,0.82398841)"><tspan
+           sodipodi:role="line"
+           id="tspan4318"
+           x="1.9884896"
+           y="1272.0911"
+           style="font-size:24.15064049px;font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:#ffffff;stroke-width:0.77144647;stroke-miterlimit:0;stroke-opacity:1;stroke-dasharray:none;font-family:Linux Libertine O;-inkscape-font-specification:Linux Libertine O">λ</tspan></text>
+    </g>
+  </g>
+</svg>

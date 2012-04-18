@@ -1,0 +1,9 @@
+
+[Desktop Entry]
+Name=Transλιτ
+Exec=/usr/share/translit/translit.py
+Icon=indicator-translit
+Terminal=false
+Type=Application
+StartupNotify=false
+Categories=Utility

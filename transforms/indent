@@ -1,0 +1,3 @@
+Dedented->Indented
+>p;'    ' + '\n    '.join(_.split('\n'));
+<p;('\n'+_).replace('\n    ', '\n')[1:];
