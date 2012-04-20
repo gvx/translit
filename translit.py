@@ -209,7 +209,23 @@ class Options(gtk.Dialog):
 			disabled.add(model[path][1])
 		self.main.write_disabled(PATH)
 
+def do_single(name):
+	for path in [SYSPATH, PATH]:
+		for i in files(path + 'transforms/'):
+			if i.caption == name:
+				clipboard = gtk.Clipboard()
+				t = clipboard.wait_for_text()
+				if t:
+					clipboard.set_text(i.apply(t))
+					clipboard.store()
+				return
+
 if __name__ == "__main__":
-	Main()
-	gtk.main()
+	import sys
+
+	if len(sys.argv) > 1:
+		do_single(sys.argv[1])
+	else:
+		Main()
+		gtk.main()
 
