@@ -68,6 +68,10 @@ def parsefile(name):
 					substate = True
 				elif ch in ' \t\n\r':
 					pass
+				else:
+					# silently ignore errors
+					# evil, I know!
+					return []
 			elif not closer:
 				closer = ch
 			elif ch == closer:
