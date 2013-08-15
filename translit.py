@@ -6,7 +6,8 @@ pygtk.require('2.0')
 import gtk
 import appindicator
 import gobject
-import os
+import gconf
+import os.path
 import re
 
 def files(location):
@@ -173,15 +174,16 @@ class Main:
 class Options(gtk.Dialog):
 	def __init__(self, main):
 		gtk.Dialog.__init__(self, "Options", buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_ACCEPT))
-		self.liststore = gtk.ListStore(gobject.TYPE_BOOLEAN, gobject.TYPE_STRING)
+		self.liststore = gtk.ListStore(gobject.TYPE_BOOLEAN, gobject.TYPE_STRING, gobject.TYPE_STRING)
 		self.main = main
 		self.map = {}
+		self.gconf = gconf.client_get_default()
 		for item in main.menu.get_children():
 			if type(item) != gtk.MenuItem:
 				break
 			label = item.get_label()
 			self.map[label] = item
-			self.liststore.append((label not in disabled, label))
+			self.liststore.append((label not in disabled, label, self.gconf.get_string(self.getpath(label) + 'action') or "Disabled"))
 		self.list = gtk.TreeView(self.liststore)
 		self.list.set_headers_visible(False)
 		column = gtk.TreeViewColumn("Enabled")
@@ -197,7 +199,15 @@ class Options(gtk.Dialog):
 		cell = gtk.CellRendererText()
 		column.pack_start(cell, False)
 		column.add_attribute(cell, "text", 1)
-		
+		column = gtk.TreeViewColumn("Shortcut")
+		self.list.append_column(column)
+		cell = gtk.CellRendererAccel()
+		cell.set_property('editable', True)
+		cell.connect('accel-edited', self.edit_accel, self.liststore)
+		cell.connect('accel-cleared', self.clear_accel, self.liststore)
+		column.pack_start(cell, False)
+		column.add_attribute(cell, "text", 2)
+
 		self.list.show()
 		self.get_content_area().add(self.list)
 	def toggle(self, cell, path, model):
@@ -208,6 +218,27 @@ class Options(gtk.Dialog):
 		else:
 			disabled.add(model[path][1])
 		self.main.write_disabled(PATH)
+	def edit_accel(self, cell, path, accel_key, accel_mods, hardware_keycode, model):
+		name = gtk.accelerator_name(accel_key, accel_mods)
+		if (accel_mods & ~gtk.gdk.SHIFT_MASK) != 0:
+			cell.set_property('accel-key', accel_key)
+			cell.set_property('accel-mods', accel_mods)
+			model[path][2] = name
+			label = model[path][1]
+			#self.gconf.set_string(self.getpath(label) + 'binding', name)
+			#self.gconf.set_string(self.getpath(label) + 'name', label)
+			#self.gconf.set_string(self.getpath(label) + 'action', '"%s" "%s"' % (os.path.abspath(__file__), label))
+		else:
+			 dlg = gtk.MessageDialog(parent=self, flags=0, type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK, message_format="Shortcut disabled")
+			 dlg.format_secondary_text("Setting " + name + " as shortcut is not a good idea.")
+			 dlg.run()
+			 dlg.destroy()
+	def clear_accel(self, cell, path, model):
+		model[path][2] = "Disabled"
+		cell.set_property('accel-key', 0)
+		cell.set_property('accel-mods', 0)
+	def getpath(self, name):
+		return '/desktop/gnome/keybindings/%s/' % re.sub('[^_0-9a-zA-Z-]', '_', name.replace(' → ', '_'))
 
 def do_single(name):
 	for path in [SYSPATH, PATH]:
